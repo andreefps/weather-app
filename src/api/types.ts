@@ -1,40 +1,64 @@
-export type WeatherData = {
-  weather: [
-    {
-      id: number;
-      main: string;
-      description: string;
-      icon: string;
-    }
-  ];
-  main: {
-    temp: number;
-    feels_like: number;
-    temp_min: number;
-    temp_max: number;
-    pressure: number;
-    humidity: number;
-  };
-  wind: {
-    speed: number;
-    deg: number;
-  };
-  sys: {
-    country: string;
+export type ForecastData = {
+  lat: number;
+  lon: number;
+  timezone: string;
+  timezone_offset: number;
+  current: {
+    dt: number;
     sunrise: number;
     sunset: number;
+    temp: number;
+    feels_like: number;
+    pressure: number;
+    humidity: number;
+    dew_point: number;
+    uvi: number;
+    clouds: number;
+    visibility: number;
+    wind_speed: number;
+    wind_deg: number;
+    wind_gust: number;
+    weather: WeatherInfo[];
   };
-  name: string;
+  daily: DayInfo[];
 };
 
-export type ExtendedForecastData = {
-  day: string;
+export type WeatherInfo = {
+  id: number;
+  main: string;
+  description: string;
+  icon: string;
+};
+
+export type DayInfo = {
+  dt: number;
+  sunrise: Date;
+  sunset: Date;
+  moonrise: Date;
+  moonset: Date;
+  moon_phase: number;
   temp: {
-    temp_min: number;
-    temp_max: number;
+    day: number;
+    min: number;
+    max: number;
+    night: number;
+    eve: number;
+    morn: number;
   };
-  weather: {
-    id: number;
-    main: string;
+  feels_like: {
+    day: number;
+    night: number;
+    eve: number;
+    morn: number;
   };
+  pressure: number;
+  humidity: number;
+  dew_point: number;
+  wind_speed: number;
+  wind_deg: number;
+  wind_gust: number;
+  weather: WeatherInfo[];
+  clouds: number;
+  pop: number;
+  uvi: number;
 };

@@ -3,17 +3,15 @@ import "./App.css";
 import { CurrentWeather } from "./components/CurrentWeather";
 import { WeekForecast } from "./components/WeekForecast";
 import { useSelector } from "react-redux";
-import { fetchWeatherAction } from "./redux/weatherSlices";
 import { RootState } from "./redux/store";
 import { useAppDispatch } from "./redux/hooks";
+import { fetchForecast } from "./redux/weatherSlices";
 
 function App() {
-  const { loading, error, weatherInfo } = useSelector(
-    (state: RootState) => state
-  );
+  const { loading, error, forecast } = useSelector((state: RootState) => state);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(fetchWeatherAction());
+    dispatch(fetchForecast());
   }, []);
 
   return (
