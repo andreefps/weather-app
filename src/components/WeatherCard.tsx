@@ -1,19 +1,28 @@
 import { CloudSun } from "phosphor-react";
-import { kelvinToCelsius } from "../api/utils";
+import { kelvinToCelsius, secondsToWeekday } from "../utils/formatters";
 interface WeatherCardProps {
-  weekDay: number;
+  date: number;
   temp: number;
   min: number;
   max: number;
+  icon: string;
 }
-export const WeatherCard = ({ weekDay, temp, min, max }: WeatherCardProps) => {
-  const formattedDay = new Date(weekDay * 1000).toLocaleDateString();
+export const WeatherCard = ({
+  date,
+  temp,
+  min,
+  max,
+  icon,
+}: WeatherCardProps) => {
   return (
     <div className="flex justify-center">
-      <div className="bg-neutral-800 w-52 h-32 mt-20 rounded-md p-4">
-        <strong className="text-white text-lg">{formattedDay}</strong>
-        <div className="flex text-white mt-2 align-center gap-2">
-          <CloudSun size={30} />
+      <div className="bg-neutral-800 w-52 h-fit mt-20 rounded-md p-4">
+        <strong className=" text-lg">{secondsToWeekday(date)}</strong>
+        <div className="flex items-center mt-2 gap-2">
+          <img
+            className="w-12"
+            src={` http://openweathermap.org/img/wn/${icon}@2x.png`}
+          />
           <h1 className="text-2xl"> {kelvinToCelsius(temp)}°</h1>
         </div>
         <p className="text-gray-300 text-md whitespace-nowrap">

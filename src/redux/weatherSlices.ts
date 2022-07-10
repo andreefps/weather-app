@@ -1,4 +1,4 @@
-import { ForecastData } from "./../api/types";
+import { ForecastData } from "../utils/types";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -14,29 +14,11 @@ const initialState: WeatherState = {
   error: "",
 };
 
-// export const fetchWeatherAction = createAsyncThunk<
-//   WeatherData,
-//   void,
-//   { state: WeatherState }
-// >("weather/fetch", async (payload, { getState }) => {
-//   const { city } = getState();
-//   try {
-//     const { data } = await axios.get(
-//       `https://api.openweathermap.org/data/2.5/weather?q=${city}&unit=celsius&type=accurate&APPID=${
-//         import.meta.env.VITE_API_KEY
-//       }`
-//     );
-//     return data;
-//   } catch (error) {
-//     throw error;
-//   }
-// });
-
 export const fetchForecast = createAsyncThunk<
   ForecastData,
   void,
   { state: WeatherState }
->("forecast/fetch", async (payload, { getState }) => {
+>("forecast/fetch", async () => {
   try {
     const { data } = await axios.get(
       `https://api.openweathermap.org/data/2.5/onecall?lat=51.5085&lon=-0.1257&unit=metric&exclude=hourly,minutely&APPID=${
@@ -55,18 +37,6 @@ const weatherSlices = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      // .addCase(fetchWeatherAction.pending, (state, action) => {
-      //   state.loading = true;
-      // })
-      // .addCase(fetchWeatherAction.fulfilled, (state, action) => {
-      //   state.weatherInfo = action.payload;
-      //   state.loading = false;
-      //   state.error = "";
-      // })
-      // .addCase(fetchWeatherAction.rejected, (state, action) => {
-      //   state.loading = false;
-      //   state.error = action.error.message;
-      // })
       .addCase(fetchForecast.pending, (state, action) => {
         state.loading = true;
       })
