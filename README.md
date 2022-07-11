@@ -34,6 +34,8 @@ Iterating through a long array would potentially affect the perfomance and also 
 
 ## Planned improvements
 
+- Write tests
+
 - Add search bar to check weather on different locations
 
 ## Author
