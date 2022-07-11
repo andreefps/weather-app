@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import { useDarkMode } from "../utils/useDarkMode";
 
 export const Header = () => {
-  const { themeColor, setTheme } = useDarkMode();
+  const { classToRemove, setTheme } = useDarkMode();
   const [darkMode, setDarkMode] = useState(
-    themeColor === "light" ? true : false
+    classToRemove === "light" ? true : false
   );
 
   const toggleDarkMode = (isChecked: boolean) => {
-    setTheme(themeColor);
+    setTheme(classToRemove);
     setDarkMode(isChecked);
   };
   return (

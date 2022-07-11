@@ -6,12 +6,14 @@ interface WeatherState {
   forecast: ForecastData | undefined;
   loading: boolean;
   error: string | undefined;
+  updatedAt: string;
 }
 
 const initialState: WeatherState = {
   forecast: undefined,
   loading: false,
   error: "",
+  updatedAt: "",
 };
 
 export const fetchForecast = createAsyncThunk<
@@ -41,12 +43,28 @@ const weatherSlices = createSlice({
         state.loading = true;
       })
       .addCase(fetchForecast.fulfilled, (state, action) => {
-        state.forecast = action.payload;
         state.loading = false;
+        state.forecast = action.payload;
         state.error = "";
+        state.updatedAt = new Date().toLocaleString("en-GB", {
+          month: "long",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+        localStorage.setItem("forecast", JSON.stringify(state.forecast));
+        localStorage.setItem("updatedAt", state.updatedAt);
       })
       .addCase(fetchForecast.rejected, (state, action) => {
+        let cachedForecast = localStorage.getItem("forecast");
+        let lastUpdated = localStorage.getItem("updatedAt");
         state.loading = false;
+        if (cachedForecast) {
+          state.forecast = JSON.parse(cachedForecast);
+        }
+        if (lastUpdated) {
+          state.updatedAt = lastUpdated;
+        }
         state.error = action.error.message;
       });
   },
