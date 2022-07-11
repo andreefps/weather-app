@@ -6,6 +6,7 @@ interface WeatherCardProps {
   min: number;
   max: number;
   icon: string;
+  description: string;
 }
 export const WeatherCard = ({
   date,
@@ -13,6 +14,7 @@ export const WeatherCard = ({
   min,
   max,
   icon,
+  description,
 }: WeatherCardProps) => {
   return (
     <div className="sm:flex sm:justify-center sm:mx-2">
@@ -23,8 +25,8 @@ export const WeatherCard = ({
             className="w-12"
             src={` http://openweathermap.org/img/wn/${icon}@2x.png`}
           />
-          <h1 className="text-2xl "> {kelvinToCelsius(temp)}°</h1>
         </div>
+        <p className=" text-md whitespace-nowrap capitalize">{description}</p>
         <p className=" text-md whitespace-nowrap">
           Min {kelvinToCelsius(min)}° - Max {kelvinToCelsius(max)}°
         </p>

@@ -14,6 +14,7 @@ export const WeekForecast = () => {
               max={day.temp.max}
               min={day.temp.min}
               date={day.dt}
+              description={day.weather[0].description}
               key={day.dt.toString()}
               icon={day.weather[0].icon}
             />
