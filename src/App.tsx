@@ -1,4 +1,4 @@
-import { ReducerState, useEffect } from "react";
+import { ReducerState, useEffect, useState } from "react";
 import "./App.css";
 import { CurrentWeather } from "./components/CurrentWeather";
 import { WeekForecast } from "./components/WeekForecast";
@@ -10,15 +10,14 @@ import { Header } from "./components/Header";
 
 function App() {
   const dispatch = useAppDispatch();
+
   useEffect(() => {
     dispatch(fetchForecast());
   }, []);
-
   return (
-    <div className="">
+    <div className="bg-sky-50 text-gray-600  transition-all duration-200 dark:text-gray-200 transition-all duration-200 dark:bg-neutral-900 w-screen h-screen">
       <Header />
       <CurrentWeather />
-
       <WeekForecast />
     </div>
   );

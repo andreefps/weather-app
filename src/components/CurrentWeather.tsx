@@ -7,21 +7,22 @@ export const CurrentWeather = () => {
 
   return (
     <div className="flex justify-center">
-      <div className=" bg-neutral-800 h-80 rounded-lg my-5 py-10 px-20 flex gap-x-48">
+      <div className=" transition-all duration-200 dark:bg-neutral-800  bg-sky-100  h-80 rounded-lg my-5 py-10 px-20 flex gap-x-48">
         {forecast && (
           <>
-            <div className="bg-neutral-800 w-auto rounded-md flex-col">
+            <div className="w-auto rounded-md flex-col">
               <strong className=" text-5xl">London</strong>
-              <div className="flex  items-center gap-2 my-8">
+              <div className="flex items-center gap-2 my-5">
                 <img
                   src={`http://openweathermap.org/img/wn/${forecast.current.weather[0].icon}@2x.png`}
                   alt=""
+                  className="w-28 -ml-6"
                 />
                 <h1 className="text-5xl">
                   {kelvinToCelsius(forecast.current.temp)}°
                 </h1>
               </div>
-              <p className="text-gray-300 text-md whitespace-nowrap capitalize">
+              <p className="transition-all duration-200 dark:text-gray-300 text-xl whitespace-nowrap capitalize">
                 {forecast.current.weather[0].description}
               </p>
             </div>
