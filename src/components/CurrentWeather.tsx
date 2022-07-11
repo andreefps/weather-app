@@ -6,8 +6,8 @@ export const CurrentWeather = () => {
   const { forecast } = useAppSelector((state) => state);
 
   return (
-    <div className="flex justify-center">
-      <div className=" transition-all duration-200 dark:bg-neutral-800  bg-slate-200  h-80 rounded-lg my-5 py-10 px-20 flex gap-x-48">
+    <div className="sm:flex sm:justify-center">
+      <div className="flex-wrap h-auto transition-all duration-200 dark:bg-neutral-800  bg-slate-200 rounded-lg my-5 py-10 px-20 flex gap-x-48 sm:h-80">
         {forecast && (
           <>
             <div className="w-auto rounded-md flex-col">

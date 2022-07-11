@@ -19,7 +19,7 @@ function App() {
     dispatch(fetchForecast());
   }, []);
   return (
-    <div className="bg-sky-50 text-gray-600 transition-all duration-200 dark:text-gray-200 dark:bg-neutral-900 w-screen h-screen overflow-hidden">
+    <div className="bg-sky-50 text-gray-600 transition-all duration-200 dark:text-gray-200 dark:bg-neutral-900 overflow-x-hidden sm:overflow-hidden  sm:w-screen sm:h-screen">
       <Header />
       {loading ? (
         <div className="flex justify-center items-center h-full w-full">
@@ -31,7 +31,6 @@ function App() {
       ) : (
         <>
           <CurrentWeather />
-
           <WeekForecast />
         </>
       )}

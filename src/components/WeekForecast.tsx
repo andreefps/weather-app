@@ -6,7 +6,7 @@ export const WeekForecast = () => {
   const { forecast, updatedAt } = useAppSelector((state) => state);
   return (
     <>
-      <div className="flex justify-center gap-2 ">
+      <div className="sm:flex sm:justify-center ">
         {forecast?.daily.slice(1, 6).map((day: DayInfo) => {
           return (
             <WeatherCard
@@ -21,7 +21,7 @@ export const WeekForecast = () => {
         })}
       </div>
       <div className="flex justify-center  mt-6 w-auto h-auto">
-        <span>Updated on: : {updatedAt}</span>
+        <span>Updated on: {updatedAt}</span>
       </div>
     </>
   );
