@@ -1,6 +1,7 @@
 # Weather App
 
 App that displays London's current weather and forecast for the week using React + Redux and OpenWeatherMap Api
+Live version : https://weather-4pp.surge.sh/
 
 ## Running the app
 
