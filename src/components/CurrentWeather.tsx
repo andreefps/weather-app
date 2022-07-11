@@ -7,7 +7,7 @@ export const CurrentWeather = () => {
 
   return (
     <div className="flex justify-center">
-      <div className=" transition-all duration-200 dark:bg-neutral-800  bg-sky-100  h-80 rounded-lg my-5 py-10 px-20 flex gap-x-48">
+      <div className=" transition-all duration-200 dark:bg-neutral-800  bg-slate-200  h-80 rounded-lg my-5 py-10 px-20 flex gap-x-48">
         {forecast && (
           <>
             <div className="w-auto rounded-md flex-col">

@@ -15,7 +15,7 @@ function App() {
     dispatch(fetchForecast());
   }, []);
   return (
-    <div className="bg-sky-50 text-gray-600  transition-all duration-200 dark:text-gray-200 transition-all duration-200 dark:bg-neutral-900 w-screen h-screen">
+    <div className="bg-sky-50 text-gray-600 transition-all duration-200 dark:text-gray-200 dark:bg-neutral-900 w-screen h-screen">
       <Header />
       <CurrentWeather />
       <WeekForecast />
